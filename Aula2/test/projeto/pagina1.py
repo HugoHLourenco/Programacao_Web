@@ -4,11 +4,13 @@ app = Flask (__name__)
 
 @app.route("/")
 def index():
-    return "Ola"
+    return "<h1>Ola</h1>" \
+        "<img src = 'https://picsum.photos/600/600'>"
 
 @app.route("/alunos")
 def rota_aluno():
-    return "Página dos alunos"
+    return "<p>Página dos alunos</p>" \
+        "<img src = 'https://picsum.photos/600/600'>"
 
 @app.route("/professores")
 def rota_professores():
@@ -18,10 +20,12 @@ def rota_professores():
 
 @app.route("/notas")
 def rota_notas():
-    return "Página das notas"
+    return "<p>Página das notas</p>" \
+        "<img src = 'https://picsum.photos/600/600'>"
 
 @app.route("/coisas")
 def rota_coisas():
-    return "Página de coisas"
+    return "<p>Página de coisas</p>" \
+        "<img src = 'https://picsum.photos/600/600'>"
 
 app.run()

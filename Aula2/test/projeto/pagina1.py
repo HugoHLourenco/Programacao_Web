@@ -12,7 +12,9 @@ def rota_aluno():
 
 @app.route("/professores")
 def rota_professores():
-    return "Página dos professores"
+    return "<h1>Página dos professores</h1>" \
+        "<p>Olha a tag HTML de paragrafo aqui</p>" \
+        "<img src = 'https://picsum.photos/600/600'>"
 
 @app.route("/notas")
 def rota_notas():

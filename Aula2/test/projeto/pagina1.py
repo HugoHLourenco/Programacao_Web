@@ -32,15 +32,15 @@ def rota_coisas():
 def mostraTemplepate():
     return render_template("minhapagina.html")
 
-@app.route("/paginadois")
+@app.route("/pag2")
 def mostrapag2():
     return render_template("pag2.html")
 
-@app.route("/pagina3")
+@app.route("/pag3")
 def mostrapag3():
     return render_template("pag3.html")
 
-@app.route("/pagina4")
+@app.route("/pag4")
 def mostrapag4():
     return render_template("pag4.html")
 

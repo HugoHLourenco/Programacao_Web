@@ -44,4 +44,8 @@ def mostrapag3():
 def mostrapag4():
     return render_template("pag4.html")
 
+@app.route("/template/cadastro")
+def mostraTempCad():
+    return render_template("tempcad")
+
 app.run()

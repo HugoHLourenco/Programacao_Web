@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask (__name__)
 
@@ -27,5 +27,21 @@ def rota_notas():
 def rota_coisas():
     return "<p>Página de coisas</p>" \
         "<img src = 'https://picsum.photos/600/600'>"
+
+@app.route("/template")
+def mostraTemplepate():
+    return render_template("minhapagina.html")
+
+@app.route("/paginadois")
+def mostrapag2():
+    return render_template("pag2.html")
+
+@app.route("/pagina3")
+def mostrapag3():
+    return render_template("pag3.html")
+
+@app.route("/pagina4")
+def mostrapag4():
+    return render_template("pag4.html")
 
 app.run()

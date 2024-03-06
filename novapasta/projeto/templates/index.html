@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <h1>
-        <a href="/about">Ir para About</a> <br>
-        <a href="/contact">Ir para Contact</a> <br>
-        <a href="/services">Ir para Services</a>
-    </h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia possimus laudantium beatae sapiente quasi molestias nam iure esse perferendis aut animi a consectetur quia, labore, aperiam veniam quod nesciunt illum!
-    </p>
+{% extends 'base.html' %}
 
-    <footer>Footer...</footer>
-</body>
-</html>
+{% block conteudo %}
+<h1>
+    Página Home:
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi vero ut non fuga? Temporibus nihil nulla sed aperiam provident error quis atque! Similique, eum neque necessitatibus mollitia nam vitae excepturi!
+    </p>
+    
+    <ul>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni laborum quas delectus voluptates facere quasi, omnis vero dolorem at consequuntur, consectetur sint inventore quod odit reiciendis accusamus blanditiis nesciunt illum!       
+    </ul>
+</h1>
+{% endblock %}

@@ -17,3 +17,5 @@ def mostraContact():
 @app.route("/services")
 def mostraServices():
     return render_template("services.html")
+
+app.run()

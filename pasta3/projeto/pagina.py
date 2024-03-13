@@ -12,8 +12,9 @@ def mostraCalc():
 
 @app.route("/calcular_imc", methods=["POST"])
 def calcIMC():
-    altura = request.form["txt_altura"]
-    peso = request.form["txt_peso"]
-
+    altura = float(request.form["txt_altura"])
+    peso = float(request.form["txt_peso"])
+    imc = (altura * altura) / peso
+    return render_template("calc.html", res_imc = imc)
 
 app.run()

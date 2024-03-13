@@ -8,13 +8,14 @@
 </head>
 <body>
     <h1>calcular indice de massa corporal utilizando o método POST</h1>
-    <form action="">
+    <form action="/calcular_imc" method="POST">
         <label>Sua altura</label>
         <input type="number" name="txt_altura">
         <label>Seu peso</label>
         <input type="number" name="txt_peso"> <br>
         <input type="submit" value="calcular">
         <input type="reset" value="Limpar">
+        <h1>{{res_imc}}</h1>
     </form>
 </body>
 </html>

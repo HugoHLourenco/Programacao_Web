@@ -15,10 +15,21 @@
         <input class="form-control" type="text" name="txt_peso"> <br>
         <input class="btn btn-primary" type="submit" value="calcular">
         <input class="btn btn-primary" type="reset" value="Limpar">
+
         <h1>
             {{res_imc}}
             {{res_classificacao}}
         </h1>
     </form>
+
+    {% if res_classificacao == "IMC magro" %}
+        <br>
+        <img src="static/magrao.jpg">
+    {% else %}
+        {% if res_classificacao == "IMC sobrepeso" %}
+            <br>
+            <img src="static/gorda.webp" alt="">
+        {% endif %}
+    {% endif %}
 </body>
 </html>

@@ -16,15 +16,15 @@ def calcIMC():
     peso = float(request.form["txt_peso"])
     imc = peso / (altura * altura)
     if (imc < 18.5):
-        classificacao = "MAGREZA"
+        classificacao = "IMC magro"
     if(imc >= 18.5 and imc <= 24.9):
-        classificacao = "NORMAL"
+        classificacao = "IMC normal"
     if(imc >=25 and imc <= 29.9):
-        classificacao = "SOBREPESO"
+        classificacao = "IMC sobrepeso"
     if(imc >= 30 and imc <= 39.9):
-        classificacao = "OBESIDADE"
+        classificacao = "IMC de obesidade"
     if (imc >= 40):
-        classificacao = "OBESIDADE GRAVE"
-    return render_template("calc.html", res_imc =f'{imc:.2f}', classificacao = classificacao)
+        classificacao = "IMC de obesidade grave"
+    return render_template("calc.html", res_imc =f'{imc:.2f}', res_classificacao = classificacao)
 
 app.run()

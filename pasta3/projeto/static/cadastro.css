@@ -8,3 +8,7 @@ header{
 body{
     background-color: darkslategray;
 }
+
+input {
+    margin-left: auto;
+}

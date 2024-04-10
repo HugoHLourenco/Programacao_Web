@@ -47,4 +47,8 @@ def calc_imc_get():
         classificacao = "IMC de obesidade grave"
     return render_template("calc.html", res_imc =f'{imc:.2f}', res_classificacao = classificacao)
 
+@app.route("/cadastro")
+def cadastro():
+    return render_template("cadastro.html")
+
 app.run()

@@ -1,3 +1,10 @@
 header{
     box-shadow: 5px 5px 10px black;
+    height: 50px;
+    font-size: 30px;
+    margin-left: 50px;
+}
+
+body{
+    background-color: darkslategray;
 }

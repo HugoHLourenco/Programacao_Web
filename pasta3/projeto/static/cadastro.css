@@ -1,14 +1,33 @@
-header{
+header {
     box-shadow: 5px 5px 10px black;
     height: 50px;
     font-size: 30px;
     margin-left: 50px;
 }
 
-body{
+body {
     background-color: darkslategray;
 }
 
-input {
-    margin-left: auto;
+input#txt_nome {
+    margin-left: 10px;
+}
+
+input#txt_cpf {
+    margin-left: 21px;
+}
+
+input#txt_email {
+    margin-left: 6px;
+}
+
+input#txt_senha {
+    margin-left: 10px;
+}
+
+button#bt_salvar {
+    background-color: antiquewhite;
+    height: 35px;
+    width: 60px;
+    margin-left: 30px;
 }

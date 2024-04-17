@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import mysql.connector
 
 app = Flask (__name__)
 
@@ -47,8 +48,23 @@ def calc_imc_get():
         classificacao = "IMC de obesidade grave"
     return render_template("calc.html", res_imc =f'{imc:.2f}', res_classificacao = classificacao)
 
-@app.route("/cadastro")
+@app.route("/cadastro", methods =['POST'])
 def cadastro():
+    nome = request.form['txt_nome']
+    cpf = request.form['txt_cpf']
+    email = request.form['txt_email']
+    senha = request.form['txt_senha']
+    do = mysql.connector.connect(host = '201.23.3.86', 
+                                 port= 5000,
+                                 user= "usr_aluno",
+                                 password= "E$tud@_m@1$",
+                                 database= "aula_fatec")
+    mycursor = do.cursor()
+    query = "INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)"
+    values = (nome,cpf,email, senha)
+    mycursor.execute(query, values)
+    do.comit()
+    return "gravou"
     return render_template("cadastro.html")
 
 app.run()

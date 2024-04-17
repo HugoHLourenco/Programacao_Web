@@ -48,7 +48,12 @@ def calc_imc_get():
         classificacao = "IMC de obesidade grave"
     return render_template("calc.html", res_imc =f'{imc:.2f}', res_classificacao = classificacao)
 
-@app.route("/cadastro", methods =['POST'])
+@app.route("/cadastro")
+def mostraCadastro():
+    return render_template("cadastro.html")
+
+
+@app.route("/cadastro_usuario", methods =['POST'])
 def cadastro():
     nome = request.form['txt_nome']
     cpf = request.form['txt_cpf']
@@ -65,6 +70,6 @@ def cadastro():
     mycursor.execute(query, values)
     do.comit()
     return "gravou"
-    return render_template("cadastro.html")
+    
 
 app.run()

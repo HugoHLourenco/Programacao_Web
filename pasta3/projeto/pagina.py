@@ -71,5 +71,4 @@ def cadastro():
     do.comit()
     return "gravou"
     
-
 app.run()

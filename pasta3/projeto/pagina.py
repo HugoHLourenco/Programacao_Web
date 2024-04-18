@@ -53,22 +53,22 @@ def mostraCadastro():
     return render_template("cadastro.html")
 
 
-@app.route("/cadastro_usuario", methods =['POST'])
+@app.route("/cadastro", methods =['POST'])
 def cadastro():
     nome = request.form['txt_nome']
     cpf = request.form['txt_cpf']
     email = request.form['txt_email']
     senha = request.form['txt_senha']
-    do = mysql.connector.connect(host = '201.23.3.86', 
+    db = mysql.connector.connect(host = '201.23.3.86', 
                                  port= 5000,
                                  user= "usr_aluno",
                                  password= "E$tud@_m@1$",
                                  database= "aula_fatec")
-    mycursor = do.cursor()
+    mycursor = db.cursor()
     query = "INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)"
     values = (nome,cpf,email, senha)
     mycursor.execute(query, values)
-    do.commit()
+    db.commit()
     return "gravou"
     
 app.run()

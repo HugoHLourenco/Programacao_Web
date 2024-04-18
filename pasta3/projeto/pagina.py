@@ -53,7 +53,7 @@ def mostraCadastro():
     return render_template("cadastro.html")
 
 
-@app.route("/cadastro", methods =['POST'])
+@app.route("/cadastro_usuario", methods =['POST'])
 def cadastro():
     nome = request.form['txt_nome']
     cpf = request.form['txt_cpf']
@@ -70,5 +70,18 @@ def cadastro():
     mycursor.execute(query, values)
     db.commit()
     return 'gravou'
+
+@app.route("/caduser")
+def lista_user():
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = 'select nome, cpf, email from HugoIII_tbusuario'
+    mycursor.execute(query)
+    resultado = mycursor.fetchall()
+    return render_template('cadastro.html', usuarios = resultado)
     
 app.run()

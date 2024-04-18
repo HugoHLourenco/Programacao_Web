@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import _mysql_connector
+import mysql.connector
 
 app = Flask (__name__)
 

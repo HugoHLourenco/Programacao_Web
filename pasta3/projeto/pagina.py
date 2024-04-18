@@ -65,8 +65,8 @@ def cadastro():
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)'
-    values = (nome,cpf,email, senha)
+    query = 'INSERT INTO Hugo_IIItbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)'
+    values = (nome, cpf, email, senha)
     mycursor.execute(query, values)
     db.commit()
     return 'gravou'
@@ -79,7 +79,7 @@ def lista_user():
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'select nome, cpf, email from HugoIII_tbusuario'
+    query = 'select nome, cpf, email from Hugo_IIItbusuario'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('cadastro.html', usuarios = resultado)

@@ -61,14 +61,14 @@ def cadastro():
     senha = request.form['txt_senha']
     db = mysql.connector.connect(host = '201.23.3.86', 
                                  port= 5000,
-                                 user= "usr_aluno",
-                                 password= "E$tud@_m@1$",
-                                 database= "aula_fatec")
+                                 user= 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
     mycursor = db.cursor()
-    query = "INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)"
+    query = 'INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)'
     values = (nome,cpf,email, senha)
     mycursor.execute(query, values)
     db.commit()
-    return "gravou"
+    return 'gravou'
     
 app.run()

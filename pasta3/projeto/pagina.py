@@ -68,7 +68,7 @@ def cadastro():
     query = "INSERT INTO HugoIII_tbusuario ( nome, cpf, email, senha) VALUES (%s, %s, %s, %s)"
     values = (nome,cpf,email, senha)
     mycursor.execute(query, values)
-    do.comit()
+    do.commit()
     return "gravou"
     
 app.run()

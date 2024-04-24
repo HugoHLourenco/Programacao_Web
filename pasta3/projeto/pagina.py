@@ -69,7 +69,7 @@ def cadastro():
     values = (nome, cpf, email, senha)
     mycursor.execute(query, values)
     db.commit()
-    return 'gravou'
+    return render_template("gravou.html")
 
 @app.route("/caduser")
 def lista_user():
@@ -79,7 +79,7 @@ def lista_user():
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'select nome, cpf, email from Hugo_IIItbusuario'
+    query = 'select nome, cpf, email, id from Hugo_IIItbusuario'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('cadastro.html', usuarios = resultado)

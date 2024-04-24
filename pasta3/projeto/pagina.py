@@ -71,6 +71,7 @@ def cadastro():
     db.commit()
     return render_template("gravou.html")
 
+
 @app.route("/caduser")
 def lista_user():
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -82,7 +83,7 @@ def lista_user():
     query = 'select nome, cpf, email, id from Hugo_IIItbusuario'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
-    return render_template('cadastro.html', usuarios = resultado)
+    return render_template('caduser.html', usuarios = resultado)
 
 
 @app.route("/alternar_usuario/<user>")

@@ -84,6 +84,7 @@ def lista_user():
     resultado = mycursor.fetchall()
     return render_template('cadastro.html', usuarios = resultado)
 
+
 @app.route("/alternar_usuario/<user>")
 def alternar_usuario(user):
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -92,9 +93,10 @@ def alternar_usuario(user):
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'select nome, cpf, email from Hugo_IIItbusuario' + user
+    query = 'select nome, cpf, email from Hugo_IIItbusuario where id = ' + user
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('cadastro.html', usuarios = resultado)
+
 
 app.run()

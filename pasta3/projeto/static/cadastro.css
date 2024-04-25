@@ -25,9 +25,9 @@ input#txt_senha {
     margin-left: 10px;
 }
 
-button#bt_salvar {
+input#bt_salvar {
     background-color: antiquewhite;
     height: 35px;
-    width: 60px;
+    width: 80px;
     margin-left: 30px;
 }

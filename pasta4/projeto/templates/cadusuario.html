@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de usuário</h1>
+    {% if opcao == 'alterar' %}
+    {% for user in usuarios %}
+    <form action="/cadastrar_usuario" method="post">
+        <div class="form-group" style="margin-top: 10px;">
+            <label>Nome</label><input class="form-control" placeholder="Digite o nome" type="text" name="txt_nome"_nome value= {{ user[0] }}>
+            <label>CPF</label><input class="form-control" placeholder="Digite o CPF" type="text" name="txt_cpf" value= {{ user[1] }}>
+            <label>Email</label><input class="form-control" placeholder="Digite o email" type="email" name="txt_email" value= {{ user[2] }}>
+            <label>Senha</label><input class="form-control" placeholder="Digite a senha" type="password" name="txt_senha">
+            <br>
+            <input class="btn btn-priary" type="submit" value="Salvar alteração">
+        </div>
+    </form>
+    {% endfor %}
+    {% else %}
+    <form action="/cadastrar_usuario" method="post">
+        <div class="form-group" style="margin-top: 10px;">
+            <label>Nome</label><input class="form-control" placeholder="Digite o nome" type="text" name="txt_nome">
+            <label>CPF</label><input class="form-control" placeholder="Digite o CPF" type="text" name="txt_cpf">
+            <label>Email</label><input class="form-control" placeholder="Digite o email" type="email" name="txt_email">
+            <label>Senha</label><input class="form-control" placeholder="Digite a senha" type="password" name="txt_senha">
+            <br>
+            <input class="btn btn-priary" type="submit" value="Salvar">
+        </div>
+    </form>
+    {% endif %}
+    <table class="table" action="/usercad" method='post'>
+        <tr>
+            <th>nome</th>
+            <th>CPF</th>
+            <th>email</th>
+            <th>excluir</th>
+            <th>alterar</th>
+        </tr>
+        {% for user in usuarios %}
+            <tr>
+                <td>{{user[0]}}</td>
+                <td>{{user[1]}}</td>
+                <td>{% if user[2] is not none %}
+                        {{user[2]}}
+                    {%else%}
+                        vazio
+                    {%endif%}
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <a href= {{ url_for("alterar_usuario", user=user[3]) }}>alterar</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

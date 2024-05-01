@@ -83,7 +83,7 @@ def lista_user():
     query = 'select nome, cpf, email, id from Hugo_IIItbusuario'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
-    return render_template('caduser.html', usuarios = resultado)
+    return render_template('caduser.html', opcao = 'listar' ,usuarios = resultado)
 
 
 @app.route("/alternar_usuario/<user>")
@@ -97,7 +97,7 @@ def alternar_usuario(user):
     query = 'select nome, cpf, email from Hugo_IIItbusuario where id = ' + user
     mycursor.execute(query)
     resultado = mycursor.fetchall()
-    return render_template('cadastro.html', usuarios = resultado)
+    return render_template('cadastro.html', opcao = 'alterar', usuarios = resultado)
 
 
 app.run()

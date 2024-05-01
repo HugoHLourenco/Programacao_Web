@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/cadastro.css">
+    <title>Alterar</title>
+</head>
+<body>
+    <h1>Cadastro de usuário</h1>
+    <form action="/alterar_pg_usuario" method="POST">
+        <header>Alterar o usuário</header>
+
+        <p>
+            Nome:   
+            <input type="text" name="txt_nome" id="txt_nome">
+        </p>
+    
+        <p>
+            CPF:    
+            <input type="text" name="txt_cpf" id="txt_cpf">
+        </p>
+    
+        <p>
+            E-mail: 
+            <input type="text" name="txt_email" id="txt_email">
+        </p>
+    
+        <p>
+            Senha:       
+            <input type="password" name="txt_senha" id="txt_senha">
+        </p>
+    
+        <p>
+            <input type="submit" value="Alterar" name="" id="bt_salvar">
+        </p>
+    </form>
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>

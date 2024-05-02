@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import mysql.connector
 
 app = Flask (__name__)
@@ -99,5 +99,21 @@ def alternar_usuario(user):
     resultado = mycursor.fetchall()
     return render_template('cadastro.html', opcao = 'alterar', usuarios = resultado)
 
+@app.route("/update_usuario", methods = ["POST"])
+def update_usuario():
+    nome = request.form["txt_nome"]
+    cpf = request.form["txt_cpf"]
+    email = request.form["txt_email"]
+    senha = request.form["txt_senha"]
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = "update Hugo_IIItbusuario set nome = '" + nome + "', cpf = '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = '" + id
+    mycursor.execute(query)
+    db.commit()
+    return redirect("/caduser")
 
 app.run()

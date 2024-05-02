@@ -7,33 +7,57 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <form action="/cadastro_usuario" method="POST">
-        <header>Cadastro do usuário</header>
-
+    <header>Cadastro do usuário</header>
+    {% if opcao == 'alterar' %}
+    {% for user in usuarios %}
+    <form action="/update_usuario" method="POST">
         <p>
             Nome:   
-            <input type="text" name="txt_nome" id="txt_nome">
-        </p>
-    
+            <input type="text" name="txt_nome" id="txt_nome" value= {{ user[0] }}>
+        </p> 
         <p>
             CPF:    
-            <input type="text" name="txt_cpf" id="txt_cpf">
-        </p>
-    
+            <input type="text" name="txt_cpf" id="txt_cpf" value= {{ user[1] }}>
+        </p>    
         <p>
             E-mail: 
-            <input type="text" name="txt_email" id="txt_email">
-        </p>
-    
+            <input type="text" name="txt_email" id="txt_email" value= {{ user[2] }}>
+        </p> 
         <p>
             Senha:       
             <input type="password" name="txt_senha" id="txt_senha">
+        </p>   
+        <p>
+            <input type="text" placeholder="Digite o nome" name="txt_id" hidden="true" value= {{ user[3] }}>
         </p>
-    
         <p>
             <input type="submit" value="Cadastrar" name="" id="bt_salvar">
         </p>
     </form>
+    {% endfor %}
+    {% else %}
+    <form action="/cadastro_usuario" method="POST">
+        <p>
+            Nome:   
+            <input type="text" name="txt_nome" id="txt_nome">
+        </p> 
+        <p>
+            CPF:    
+            <input type="text" name="txt_cpf" id="txt_cpf">
+        </p>    
+        <p>
+            E-mail: 
+            <input type="text" name="txt_email" id="txt_email">
+        </p> 
+        <p>
+            Senha:       
+            <input type="password" name="txt_senha" id="txt_senha">
+        </p>   
+        <p>
+            <input type="submit" value="Cadastrar" name="" id="bt_salvar">
+        </p>
+    {% endif %}
+
     <br>
     <a href="/">Voltar</a>
 </body>

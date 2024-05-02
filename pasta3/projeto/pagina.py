@@ -105,13 +105,14 @@ def update_usuario():
     cpf = request.form["txt_cpf"]
     email = request.form["txt_email"]
     senha = request.form["txt_senha"]
+    id = request.form["txt_id"]
     db = mysql.connector.connect(host = '201.23.3.86',
                                  port = 5000,
                                  user = 'usr_aluno',
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = "update Hugo_IIItbusuario set nome = '" + nome + "', cpf = '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = '" + id
+    query = "update Hugo_IIItbusuario set nome = '" + nome + "', cpf = '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = " + id
     mycursor.execute(query)
     db.commit()
     return redirect("/caduser")

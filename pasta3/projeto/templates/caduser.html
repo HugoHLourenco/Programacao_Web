@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/cadastro.css">
+    <link rel="stylesheet" href="../static/bootstrap.css">
     <title>Usuários Cadastrados</title>
 </head>
 <body>
-    <table>
+    <table class="table" >
         <tr>
             <th>nome</th>
             <th>cpf</th>
@@ -24,11 +24,12 @@
             {% else %}
                 Vazio
             {% endif %}</td>
-            <td>
 
+            <td>
+                <a href="{{ url_for('exclui_usuario', user=usuario[3]) }}">Excluir</a>
             </td>
             <td>
-                <a href="{{ url_for('alternar_usuario', user=usuario[3]) }}">alterar</a>
+                <a href="{{ url_for('alternar_usuario', user=usuario[3]) }}">Alterar</a>
             </td>
         </tr>
         {% endfor %}

@@ -117,4 +117,19 @@ def update_usuario():
     db.commit()
     return redirect("/caduser")
 
+@app.route("/exclui_usuario/<user>")
+def exclui_usuario(user):
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = "delete from Hugo_IIItbusuario where id = " + user 
+    mycursor.execute(query)
+    db.commit()
+    mycursor.close()
+    db.close()
+    return render_template("deletou.html") 
+
 app.run()

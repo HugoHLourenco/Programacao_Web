@@ -141,7 +141,7 @@ def mostraCadastroCliente():
 @app.route('/cadastro_cliente', methods =['POST'])
 def cadastroCliente():
     nome = request.form['txt_nome']
-    data = request.form['txt_data']
+    datanasc = request.form['txt_datanasc']
     cpf = request.form['txt_cpf']
     rg = request.form['txt_rg']
     email = request.form['txt_email']
@@ -156,8 +156,8 @@ def cadastroCliente():
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'INSERT INTO Hugo_tbcliente ( nome, data, cpf, rg, email, endereco, bairro, cidade, uf, cep) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
-    values = (nome, data, cpf, rg, email, endereco, bairro, cidade, uf, cep)
+    query = 'INSERT INTO Hugo_tbcliente ( nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+    values = (nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep)
     mycursor.execute(query, values)
     db.commit()
     return render_template('gravou')

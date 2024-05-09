@@ -160,7 +160,7 @@ def cadastroCliente():
     values = (nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep)
     mycursor.execute(query, values)
     db.commit()
-    return render_template('gravou')
+    return render_template('/cadastrocliente.html')
 
 
 app.run()

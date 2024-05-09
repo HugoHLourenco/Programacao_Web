@@ -132,4 +132,7 @@ def exclui_usuario(user):
     db.close()
     return render_template("deletou.html") 
 
+@app.route('/cadastrocliente')
+def cadastroCliente():
+
 app.run()

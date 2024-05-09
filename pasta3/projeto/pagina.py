@@ -48,10 +48,10 @@ def calc_imc_get():
         classificacao = "IMC de obesidade grave"
     return render_template("calc.html", res_imc =f'{imc:.2f}', res_classificacao = classificacao)
 
+## pg cadastro
 @app.route("/cadastro")
 def mostraCadastro():
     return render_template("cadastro.html")
-
 
 @app.route("/cadastro_usuario", methods =['POST'])
 def cadastro():
@@ -85,7 +85,7 @@ def lista_user():
     resultado = mycursor.fetchall()
     return render_template('caduser.html', opcao = 'listar' ,usuarios = resultado)
 
-
+##
 @app.route("/alternar_usuario/<user>")
 def alternar_usuario(user):
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -116,6 +116,7 @@ def update_usuario():
     mycursor.execute(query)
     db.commit()
     return redirect("/caduser")
+##
 
 @app.route("/exclui_usuario/<user>")
 def exclui_usuario(user):
@@ -132,7 +133,34 @@ def exclui_usuario(user):
     db.close()
     return render_template("deletou.html") 
 
+## Pg que mostra o cadastro de cliente
 @app.route('/cadastrocliente')
+def mostraCadastroCliente():
+    return render_template('/cadastrocliente.html')
+## Método de cadastro de cliente
+@app.route('/cadastro_cliente', methods =['POST'])
 def cadastroCliente():
+    nome = request.form['txt_nome']
+    data = request.form['txt_data']
+    cpf = request.form['txt_cpf']
+    rg = request.form['txt_rg']
+    email = request.form['txt_email']
+    endereco = request.form['txt_endereco']
+    bairro = request.form['txt_bairro']
+    cidade = request.form['txt_cidade']
+    uf = request.form['txt_uf']
+    cep = request.form['txt_cep']
+    db = mysql.connector.connect(host = '201.23.3.86', 
+                                 port= 5000,
+                                 user= 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = 'INSERT INTO Hugo_tbcliente ( nome, data, cpf, rg, email, endereco, bairro, cidade, uf, cep) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+    values = (nome, data, cpf, rg, email, endereco, bairro, cidade, uf, cep)
+    mycursor.execute(query, values)
+    db.commit()
+    return render_template('gravou')
+
 
 app.run()

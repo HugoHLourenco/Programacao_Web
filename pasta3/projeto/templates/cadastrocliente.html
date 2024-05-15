@@ -7,6 +7,55 @@
 </head>
 <body>
     <header>Cadastro de cliente</header>
+    {% if opcao == 'alterar' %}
+    {% for user in usuarios %}
+    <form action="/update_cliente" method="POST">
+        <p>
+            Nome:
+            <input type="text" name="txt_nome" id="txt_nome" value= {{ user[0] }}>
+        </p>
+        <p>
+            Data de nascimento:
+            <input type="text" name="txt_datanasc" id="txt_datanasc" value= {{ user[1] }}>
+        </p>
+        <p>
+            CPF:
+            <input type="text" name="txt_cpf" id="txt_cpf" value= {{ user[2] }}>
+        </p>
+        <p>
+            RG:
+            <input type="text" name="txt_rg" id="txt_rg" value= {{ user[3] }}>
+        </p>
+        <p>
+            Email:
+            <input type="text" name="txt_email" id="txt_email" value= {{ user[4] }}>
+        </p>
+        <p>
+            Endereço:
+            <input type="text" name="txt_endereco" id="txt_endereco" value= {{ user[5] }}>
+        </p>
+        <p>
+            Bairro:
+            <input type="text" name="txt_bairro" id="txt_bairro" value= {{ user[6] }}>
+            Cidade:
+            <input type="text" name="txt_cidade" id="txt_cidade" value= {{ user[7] }}>
+            UF:
+            <input type="text" name="txt_uf" id="txt_uf" value= {{ user[8] }}>
+        </p>
+        <p>
+            CEP:
+            <input type="text" name="txt_cep" id="txt_cep" value= {{ user[9] }}>
+        </p>
+        <p>
+            ID:
+            <input type="text" name="txt_id" id="" value= {{ user[10] }}>
+        </p>
+        <p>
+            <input type="submit" value="Cadastrar">
+        </p>
+    </form>
+    {% endfor %}
+    {% else %}
     <form action="/cadastro_cliente" method="post">
         <p>
             Nome:
@@ -48,6 +97,7 @@
             <input type="submit" value="Cadastrar">
         </p>
     </form>
+    {% endif %}
     <a href="/">Voltar</a> <br>
     <a href="/tabelacliente">Ir para a tabela</a>
 </body>

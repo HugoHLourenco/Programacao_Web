@@ -176,18 +176,48 @@ def tabelaDoCliente():
     resultado = mycursor.fetchall()
     return render_template('/tabelacliente.html', opcao = 'listar' , usuarios = resultado)
 
-##@app.route("/caduser")
-##def lista_user():
-##    db = mysql.connector.connect(host = '201.23.3.86',
-##                                 port = 5000,
-##                                 user = 'usr_aluno',
-##                                 password= 'E$tud@_m@1$',
-##                                 database= 'aula_fatec')
-##    mycursor = db.cursor()
-##    query = 'select nome, cpf, email, id from Hugo_IIItbusuario'
-##    mycursor.execute(query)
-##    resultado = mycursor.fetchall()
-##    return render_template('caduser.html', opcao = 'listar' ,usuarios = resultado)
+## Faz o update da tabela
+@app.route("/update_cliente", methods = ["POST"])
+def update_cliente():
+    nome = request.form['txt_nome']
+    datanasc = request.form['txt_datanasc']
+    cpf = request.form['txt_cpf']
+    rg = request.form['txt_rg']
+    email = request.form['txt_email']
+    endereco = request.form['txt_endereco']
+    bairro = request.form['txt_bairro']
+    cidade = request.form['txt_cidade']
+    uf = request.form['txt_uf']
+    cep = request.form['txt_cep']
+    id = request.form["txt_id"]
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = "update Hugo_tbcliente set nome = '" + nome + "', datanasc = '" + datanasc + "', cpf = '" + cpf + "', rg = '" + rg + "', email = '" + email + "', endereco = '" + endereco + "', bairro = '" + bairro + "', cidade =  '" + cidade + "', uf = '" + uf + "', cep = '" + cep + "' where id = " + id
+    mycursor.execute(query)
+    db.commit()
+    return redirect("/tabelacliente")
+
+# @app.route("/update_usuario", methods = ["POST"])
+# def update_usuario():
+#     nome = request.form["txt_nome"]
+#     cpf = request.form["txt_cpf"]
+#     email = request.form["txt_email"]
+#     senha = request.form["txt_senha"]
+#     id = request.form["txt_id"]
+#     db = mysql.connector.connect(host = '201.23.3.86',
+#                                  port = 5000,
+#                                  user = 'usr_aluno',
+#                                  password= 'E$tud@_m@1$',
+#                                  database= 'aula_fatec')
+#     mycursor = db.cursor()
+#     query = "update Hugo_IIItbusuario set nome = '" + nome + "', cpf = '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = " + id
+#     mycursor.execute(query)
+#     db.commit()
+#     return redirect("/caduser")
 
 
 

@@ -160,7 +160,7 @@ def cadastroCliente():
     values = (nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep)
     mycursor.execute(query, values)
     db.commit()
-    return render_template('/cadastrocliente.html')
+    return render_template('/tabelacliente.html')
 
 ## Mostra a tabela cliente
 @app.route("/tabelacliente")

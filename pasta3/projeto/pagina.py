@@ -71,7 +71,7 @@ def cadastro():
     db.commit()
     return render_template("gravou.html")
 
-
+# mostra tabela
 @app.route("/caduser")
 def lista_user():
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -85,7 +85,7 @@ def lista_user():
     resultado = mycursor.fetchall()
     return render_template('caduser.html', opcao = 'listar' ,usuarios = resultado)
 
-##
+# 
 @app.route("/alternar_usuario/<user>")
 def alternar_usuario(user):
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -161,6 +161,34 @@ def cadastroCliente():
     mycursor.execute(query, values)
     db.commit()
     return render_template('/cadastrocliente.html')
+
+## Mostra a tabela cliente
+@app.route("/tabelacliente")
+def tabelaDoCliente():
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = 'select nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep from Hugo_tbcliente'
+    mycursor.execute(query)
+    resultado = mycursor.fetchall()
+    return render_template('/tabelacliente.html', opcao = 'listar' , usuarios = resultado)
+
+##@app.route("/caduser")
+##def lista_user():
+##    db = mysql.connector.connect(host = '201.23.3.86',
+##                                 port = 5000,
+##                                 user = 'usr_aluno',
+##                                 password= 'E$tud@_m@1$',
+##                                 database= 'aula_fatec')
+##    mycursor = db.cursor()
+##    query = 'select nome, cpf, email, id from Hugo_IIItbusuario'
+##    mycursor.execute(query)
+##    resultado = mycursor.fetchall()
+##    return render_template('caduser.html', opcao = 'listar' ,usuarios = resultado)
+
 
 
 app.run()

@@ -174,7 +174,7 @@ def tabelaDoCliente():
     query = 'select nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep from Hugo_tbcliente'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
-    return render_template('/tabelacliente.html', opcao = 'listar' , usuarios = resultado)
+    return render_template('/tabelacliente.html', opcao = 'listar' , clientes = resultado)
 
 ## Faz o update da tabela
 @app.route("/update_cliente", methods = ["POST"])
@@ -201,23 +201,30 @@ def update_cliente():
     db.commit()
     return redirect("/tabelacliente")
 
-# @app.route("/update_usuario", methods = ["POST"])
-# def update_usuario():
-#     nome = request.form["txt_nome"]
-#     cpf = request.form["txt_cpf"]
-#     email = request.form["txt_email"]
-#     senha = request.form["txt_senha"]
-#     id = request.form["txt_id"]
+@app.route("/alternar_cliente/<user>")
+def alternar_cliente(user):
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = 'select nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep from Hugo_tbcliente where id = ' + user
+    mycursor.execute(query)
+    resultado = mycursor.fetchall()
+    return render_template('cadastrocliente.html', opcao = 'alterar', clientes = resultado)
+# @app.route("/alternar_usuario/<user>")
+# def alternar_usuario(user):
 #     db = mysql.connector.connect(host = '201.23.3.86',
 #                                  port = 5000,
 #                                  user = 'usr_aluno',
 #                                  password= 'E$tud@_m@1$',
 #                                  database= 'aula_fatec')
 #     mycursor = db.cursor()
-#     query = "update Hugo_IIItbusuario set nome = '" + nome + "', cpf = '" + cpf + "', email = '" + email + "', senha = '" + senha + "' where id = " + id
+#     query = 'select nome, cpf, email from Hugo_IIItbusuario where id = ' + user
 #     mycursor.execute(query)
-#     db.commit()
-#     return redirect("/caduser")
+#     resultado = mycursor.fetchall()
+#     return render_template('cadastro.html', opcao = 'alterar', usuarios = resultado)
 
 
 

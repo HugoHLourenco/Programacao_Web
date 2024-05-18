@@ -227,5 +227,4 @@ def alternar_cliente(user):
 #     return render_template('cadastro.html', opcao = 'alterar', usuarios = resultado)
 
 
-
 app.run()

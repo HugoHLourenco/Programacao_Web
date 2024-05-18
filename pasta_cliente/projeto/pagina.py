@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import mysql.connector
 
 app = Flask (__name__)
@@ -181,7 +181,7 @@ def tabelaDoCliente():
     resultado = mycursor.fetchall()
     return render_template('/tabelacliente.html', opcao = 'listar' , clientes = resultado)
 
-## Faz o update da tabela
+## Faz o update da tabela -------------------------------------------------------
 @app.route("/update_cliente", methods = ["POST"])
 def update_cliente():
     nome = request.form['txt_nome']
@@ -218,6 +218,37 @@ def alternar_cliente(user):
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('cadastrocliente.html', opcao = 'alterar', clientes = resultado)
+## -------------------------------------------------------------------------------
+## Exclusão ----------------------------------------------------------------------
+@app.route("/exclui_cliente/<user>", methods=['POST'])
+def exclui_cliente(user):
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = "delete from Hugo_tbcliente where id = " + user 
+    mycursor.execute(query)
+    db.commit()
+    mycursor.close()
+    db.close()
+    return redirect(url_for('tabelacliente'))
 
+
+# @app.route("/exclui_usuario/<user>")
+# def exclui_usuario(user):
+#     db = mysql.connector.connect(host = '201.23.3.86',
+#                                  port = 5000,
+#                                  user = 'usr_aluno',
+#                                  password= 'E$tud@_m@1$',
+#                                  database= 'aula_fatec')
+#     mycursor = db.cursor()
+#     query = "delete from Hugo_IIItbusuario where id = " + user 
+#     mycursor.execute(query)
+#     db.commit()
+#     mycursor.close()
+#     db.close()
+#     return render_template("deletou.html")
 
 app.run()

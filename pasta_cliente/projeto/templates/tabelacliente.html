@@ -35,6 +35,7 @@
             <td>{{cliente[8]}}</td>
             <td>{{cliente[9]}}</td>
             <td><a href="{{ url_for ('alternar_cliente', user = cliente[10]) }}">Alterar</a></td>
+            <td><a href="{{ url_for ('exclui_cliente', user = cliente[10]) }}">Excluir</a></td>
         </tr>
         {% endfor %}
     </table>

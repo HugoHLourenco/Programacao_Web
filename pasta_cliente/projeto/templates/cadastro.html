@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <header>Cadastro do usuário</header>
+    {% if opcao == 'alterar' %}
+    {% for user in usuarios %}
+    <form action="/update_usuario" method="POST">
+        <p>
+            Nome:   
+            <input type="text" name="txt_nome" id="txt_nome" value= {{ user[0] }}>
+        </p> 
+        <p>
+            CPF:    
+            <input type="text" name="txt_cpf" id="txt_cpf" value= {{ user[1] }}>
+        </p>    
+        <p>
+            E-mail: 
+            <input type="text" name="txt_email" id="txt_email" value= {{ user[2] }}>
+        </p> 
+        <p>
+            Senha:       
+            <input type="password" name="txt_senha" id="txt_senha">
+        </p>   
+        <p>
+            ID:
+            <input type="text" placeholder="Digite o ID do elemento" name="txt_id"  value= {{ user[3] }}>
+        </p>
+        <p>
+            <input type="submit" value="Cadastrar" name="" id="bt_salvar">
+        </p>
+    </form>
+    {% endfor %}
+    {% else %}
+    <form action="/cadastro_usuario" method="POST">
+        <p>
+            Nome:   
+            <input type="text" name="txt_nome" id="txt_nome">
+        </p> 
+        <p>
+            CPF:    
+            <input type="text" name="txt_cpf" id="txt_cpf">
+        </p>    
+        <p>
+            E-mail: 
+            <input type="text" name="txt_email" id="txt_email">
+        </p> 
+        <p>
+            Senha:       
+            <input type="password" name="txt_senha" id="txt_senha">
+        </p>   
+        <p>
+            <input type="submit" value="Cadastrar" name="" id="bt_salvar">
+        </p>
+    {% endif %}
+
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>

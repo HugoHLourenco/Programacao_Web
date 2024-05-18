@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.css">
+</head>
+<body>
+    <h1>calcular indice de massa corporal utilizando o método POST</h1>
+    <form class="form-control" action="/calcular_imc" method="POST">
+        <label class="form-label">Sua altura</label>
+        <input class="form-control" type="text" name="txt_altura">
+        <label class="form-label" >Seu peso</label>
+        <input class="form-control" type="text" name="txt_peso"> <br>
+        <input class="btn btn-primary" type="submit" value="calcular">
+        <input class="btn btn-primary" type="reset" value="Limpar">
+    </form>
+    <h1>
+        {{res_imc}}
+        {{res_classificacao}}
+    </h1>
+
+    {% if res_classificacao == "IMC magro" %}
+        <br>
+        <img src="static/magrao.jpg">
+    {% else %}
+        {% if res_classificacao == "IMC sobrepeso" %}
+            <br>
+            <img src="static/gorda.webp" alt="">
+        {% endif %}
+    {% endif %}
+
+    <form action="calcular_imc_get" method="get">
+        <label>Sua altura</label>
+        <input type="text" name="txt_altura"> <br>
+        <label>Sue peso</label>
+        <input type="text" name="txt_peso"> <br>
+        <input type="submit" value="calcular">
+        <input type="reset" value="Limpar">
+    </form>
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>

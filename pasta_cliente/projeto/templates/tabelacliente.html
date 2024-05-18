@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <title>Tabela de clientes</title>
+</head>
+<body>
+    <table class="table" >
+        <tr>
+            <th>nome</th>
+            <th>Data de nascimento</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>UF</th>
+            <th>CEP</th>
+            <th>Alterar</th>
+            <th>Excluir</th>
+        </tr>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{cliente[0]}}</td>
+            <td>{{cliente[1]}}</td>
+            <td>{{cliente[2]}}</td>
+            <td>{{cliente[3]}}</td>
+            <td>{{cliente[4]}}</td>
+            <td>{{cliente[5]}}</td>
+            <td>{{cliente[6]}}</td>
+            <td>{{cliente[7]}}</td>
+            <td>{{cliente[8]}}</td>
+            <td>{{cliente[9]}}</td>
+            <td><a href="{{ url_for ('/alternar_cliente', user = cliente[10]) }}">Alterar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Voltar para home</a> <br>
+    <a href="/cadastrocliente">Voltar para cadastro</a>
+</body>
+</html>

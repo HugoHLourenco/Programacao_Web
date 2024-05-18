@@ -133,6 +133,11 @@ def exclui_usuario(user):
     db.close()
     return render_template("deletou.html") 
 
+
+
+
+
+
 ## Pg que mostra o cadastro de cliente
 @app.route('/cadastrocliente')
 def mostraCadastroCliente():
@@ -160,7 +165,7 @@ def cadastroCliente():
     values = (nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep)
     mycursor.execute(query, values)
     db.commit()
-    return render_template('/tabelacliente.html')
+    return render_template('/cadastrocliente.html')
 
 ## Mostra a tabela cliente
 @app.route("/tabelacliente")

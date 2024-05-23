@@ -162,7 +162,7 @@ def cadastroCliente():
     db.commit()
     return render_template('/cadastrocliente.html')
 
-## Mostra a tabela cliente
+## Mostra a tabela cliente select
 @app.route("/tabelacliente")
 def tabelaDoCliente():
     db = mysql.connector.connect(host = '201.23.3.86',
@@ -171,7 +171,7 @@ def tabelaDoCliente():
                                  password= 'E$tud@_m@1$',
                                  database= 'aula_fatec')
     mycursor = db.cursor()
-    query = 'select nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep from Hugo_tbcliente'
+    query = 'select nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep, id from Hugo_tbcliente'
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('/tabelacliente.html', opcao = 'listar' , clientes = resultado)

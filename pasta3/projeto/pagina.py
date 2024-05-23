@@ -214,6 +214,36 @@ def alternar_cliente(user):
     resultado = mycursor.fetchall()
     return render_template('cadastrocliente.html', opcao = 'alterar', clientes = resultado)
 
+## Exclui o cliente
+@app.route("/exclui_cliente/<user>")
+def exclui_cliente(user):
+    db = mysql.connector.connect(host = '201.23.3.86',
+                                 port = 5000,
+                                 user = 'usr_aluno',
+                                 password= 'E$tud@_m@1$',
+                                 database= 'aula_fatec')
+    mycursor = db.cursor()
+    query = "delete from Hugo_tbcliente where id = " + user 
+    mycursor.execute(query)
+    db.commit()
+    mycursor.close()
+    db.close()
+    return render_template("deletou.html")
+
+# @app.route("/exclui_usuario/<user>")
+# def exclui_usuario(user):
+#     db = mysql.connector.connect(host = '201.23.3.86',
+#                                  port = 5000,
+#                                  user = 'usr_aluno',
+#                                  password= 'E$tud@_m@1$',
+#                                  database= 'aula_fatec')
+#     mycursor = db.cursor()
+#     query = "delete from Hugo_IIItbusuario where id = " + user 
+#     mycursor.execute(query)
+#     db.commit()
+#     mycursor.close()
+#     db.close()
+#     return render_template("deletou.html")
 
 
 app.run()

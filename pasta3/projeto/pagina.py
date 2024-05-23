@@ -116,8 +116,8 @@ def update_usuario():
     mycursor.execute(query)
     db.commit()
     return redirect("/caduser")
-##
 
+## Exclui usuario
 @app.route("/exclui_usuario/<user>")
 def exclui_usuario(user):
     db = mysql.connector.connect(host = '201.23.3.86',

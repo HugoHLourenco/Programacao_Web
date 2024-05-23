@@ -160,7 +160,7 @@ def cadastroCliente():
     values = (nome, datanasc, cpf, rg, email, endereco, bairro, cidade, uf, cep)
     mycursor.execute(query, values)
     db.commit()
-    return render_template('/tabelacliente.html')
+    return render_template('/cadastrocliente.html')
 
 ## Mostra a tabela cliente
 @app.route("/tabelacliente")
@@ -213,18 +213,7 @@ def alternar_cliente(user):
     mycursor.execute(query)
     resultado = mycursor.fetchall()
     return render_template('cadastrocliente.html', opcao = 'alterar', clientes = resultado)
-# @app.route("/alternar_usuario/<user>")
-# def alternar_usuario(user):
-#     db = mysql.connector.connect(host = '201.23.3.86',
-#                                  port = 5000,
-#                                  user = 'usr_aluno',
-#                                  password= 'E$tud@_m@1$',
-#                                  database= 'aula_fatec')
-#     mycursor = db.cursor()
-#     query = 'select nome, cpf, email from Hugo_IIItbusuario where id = ' + user
-#     mycursor.execute(query)
-#     resultado = mycursor.fetchall()
-#     return render_template('cadastro.html', opcao = 'alterar', usuarios = resultado)
+
 
 
 app.run()

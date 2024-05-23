@@ -8,7 +8,7 @@
 <body>
     <header>Cadastro de cliente</header>
     {% if opcao == 'alterar' %}
-    {% for user in usuarios %}
+    {% for user in clientes %}
     <form action="/update_cliente" method="POST">
         <p>
             Nome:

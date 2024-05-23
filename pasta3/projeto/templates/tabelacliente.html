@@ -7,9 +7,9 @@
     <title>Tabela de clientes</title>
 </head>
 <body>
-    <table class="table" >
+    <table class="table" action="">
         <tr>
-            <th>nome</th>
+            <th>Nome</th>
             <th>Data de nascimento</th>
             <th>CPF</th>
             <th>RG</th>
@@ -34,13 +34,13 @@
             <td>{{cliente[7]}}</td>
             <td>{{cliente[8]}}</td>
             <td>{{cliente[9]}}</td>
-            <td><a href={{ url_for ('alternar_cliente', user=cliente[10]) }}>Alterar</a></td>
-            <td><a href={{ url_for ('exclui_cliente', user=cliente[10]) }}>Excluir</a></td>
+            <td><a href={{ url_for ('alternar_cliente', user=cliente[10]) }} class="btn btn-primary">Alterar</a></td>
+            <td><a href={{ url_for ('exclui_cliente', user=cliente[10]) }} class="btn btn-danger">Excluir</a></td>
         </tr>
         {% endfor %}
     </table>
     <br>
-    <a href="/">Voltar para home</a> <br>
-    <a href="/cadastrocliente">Voltar para cadastro</a>
+    <a href="/" class="btn btn-secondary">Voltar para home</a> <br> <br>
+    <a href="/cadastrocliente" class="btn btn-secondary">Voltar para cadastro</a>
 </body>
 </html>
